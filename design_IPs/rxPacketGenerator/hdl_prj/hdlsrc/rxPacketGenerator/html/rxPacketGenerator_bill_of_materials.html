@@ -1,0 +1,488 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+High-level Resource Utilization Report for rxPacketGenerator
+</title>
+
+</head>
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666" onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdBillOfMaterials'); else local_onload();}} catch(err) {};hdlTableShrink(this, 'Input_Port');hdlTableShrink(this, 'Output_Port');">
+<script>
+<!--
+function hdlTableShrink(o,tagNameStr)
+{
+var temp = document.getElementsByName(tagNameStr);
+if (temp[0].style.display == "")
+{
+	temp[0].style.display = "none";
+	o.innerHTML = '<span style="font-family:monospace">[+]</span>';
+}
+else
+{
+	temp[0].style.display = "";
+	o.innerHTML = '<span style="font-family:monospace">[-]</span>';
+}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableCollapseAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[+]</span>';
+	}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableExpandAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[-]</span>';
+	}
+}
+// -->
+</script>
+<font SIZE="+2" COLOR="#000066">
+Generic Resource Report for rxPacketGenerator
+</font>
+<br /><br /><br /><a name="Summary">
+<font size="+1" color="#000066">
+<b class="midprod">
+Summary
+</b>
+
+</font>
+
+</a>
+<br /><br /><table width="100%" border="1">
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+Multipliers
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Adders/Subtractors
+</td>
+<td align="center" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+Registers
+</td>
+<td align="center" valign="top" style="border-style: none">
+6
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Total 1-Bit Registers
+</td>
+<td align="center" valign="top" style="border-style: none">
+52
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+RAMs
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Multiplexers
+</td>
+<td align="center" valign="top" style="border-style: none">
+9
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+I/O Bits
+</td>
+<td align="center" valign="top" style="border-style: none">
+899
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Static Shift operators
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+Dynamic Shift operators
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+
+</table>
+<br /><br /><a name="Detailed Report">
+<font size="+1" color="#000066">
+<b class="midprod">
+Detailed Report
+</b>
+
+</font>
+
+</a>
+<br /><br /><p><hr /></p><h5>
+Report for Subsystem:    <a href="matlab:coder.internal.code2model('rxPacketGenerator:29')" name="code2model" class="code2model">
+rxPacketGenerator
+</a>
+
+</h5>
+<h5>
+Number of I/O Bits (899)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Input_Port')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+Number of Input Bits: 348
+</span>
+<span name="Input_Port" id="Input_Port">
+<ul class="SystemdefinedCollapse" id="73c88382-55cf-4318-9d32-247963755b8e" dataCollapse="off">
+<li>
+clk: 1 bit
+</li>
+<li>
+reset: 1 bit
+</li>
+<li>
+clk_enable: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:386')" name="code2model" class="code2model">
+mode
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:401')" name="code2model" class="code2model">
+transferSize
+</a>
+: 16 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:387')" name="code2model" class="code2model">
+softTrigger
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:30')" name="code2model" class="code2model">
+s_tdata_re
+</a>
+: 128 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:415')" name="code2model" class="code2model">
+s_tvalid_re
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:414')" name="code2model" class="code2model">
+m_tready_re
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:74')" name="code2model" class="code2model">
+s_tdata_im
+</a>
+: 128 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:399')" name="code2model" class="code2model">
+s_tvalid_im
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:400')" name="code2model" class="code2model">
+m_tready_im
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:448')" name="code2model" class="code2model">
+detectorTrigger
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:459')" name="code2model" class="code2model">
+resetNumberOfTransfersCounter
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:460')" name="code2model" class="code2model">
+transfersEnable
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:469')" name="code2model" class="code2model">
+fifoCounter
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:472')" name="code2model" class="code2model">
+stopCounter
+</a>
+: 32 bits
+</li>
+
+</ul>
+<span class="SDCollapseControl" onclick="collapseSD(this, '73c88382-55cf-4318-9d32-247963755b8e')" onmouseover="this.style.cursor = 'pointer'">
+&#8743; Less
+</span>
+<br />
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Output_Port')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+Number of Output Bits: 551
+</span>
+<span name="Output_Port" id="Output_Port">
+<ul class="SystemdefinedCollapse" id="bbaf33d5-f4f3-41ab-98f0-53d6fafd2579" dataCollapse="off">
+<li>
+ce_out: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:388')" name="code2model" class="code2model">
+m_tdata_re
+</a>
+: 128 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:396')" name="code2model" class="code2model">
+m_tvalid_re
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:397')" name="code2model" class="code2model">
+m_tlast_re
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:416')" name="code2model" class="code2model">
+m_tdata_im
+</a>
+: 128 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:417')" name="code2model" class="code2model">
+m_tvalid_im
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:418')" name="code2model" class="code2model">
+m_tlast_im
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:424')" name="code2model" class="code2model">
+s_tready_re
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:425')" name="code2model" class="code2model">
+s_tready_im
+</a>
+: 1 bit
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:451')" name="code2model" class="code2model">
+data_re
+</a>
+: 128 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:452')" name="code2model" class="code2model">
+data_im
+</a>
+: 128 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('rxPacketGenerator:457')" name="code2model" class="code2model">
+numberOfTransfers
+</a>
+: 32 bits
+</li>
+
+</ul>
+<span class="SDCollapseControl" onclick="collapseSD(this, 'bbaf33d5-f4f3-41ab-98f0-53d6fafd2579')" onmouseover="this.style.cursor = 'pointer'">
+&#8743; Less
+</span>
+<br />
+</span>
+<br /><p><hr /></p><h5>
+Report for User-defined block:    <a href="matlab:coder.internal.code2model('rxPacketGenerator:385')" name="code2model" class="code2model">
+fsm
+</a>
+
+</h5>
+<h5>
+Adders/Subtractors (2)
+</h5>
+<span style="font-family:monospace">
+32x32-bit Adder 							: 1
+</span>
+<br /><span style="font-family:monospace">
+16x16-bit Subtractor 							: 1
+</span>
+<br /><h5>
+Registers (6)
+</h5>
+<span style="font-family:monospace">
+32-bit Register 							: 1
+</span>
+<br /><span style="font-family:monospace">
+16-bit Register 							: 1
+</span>
+<br /><span style="font-family:monospace">
+1-bit Register 							: 4
+</span>
+<br /><h5>
+Multiplexers (9)
+</h5>
+<span style="font-family:monospace">
+1-bit 2-to-1 Multiplexer 							: 5
+</span>
+<br /><span style="font-family:monospace">
+1-bit 3-to-1 Multiplexer 							: 2
+</span>
+<br /><span style="font-family:monospace">
+16-bit 3-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+32-bit 3-to-1 Multiplexer 							: 1
+</span>
+<br /><p><hr /></p>
+</body>
+
+</html>
