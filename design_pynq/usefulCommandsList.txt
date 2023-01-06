@@ -1,12 +1,6 @@
-sudo fuser -k 8080/tcp; sudo fuser -k 8081/tcp; python3 aerpawAPI.py
-sudo fuser -k 8080/tcp; sudo fuser -k 8081/tcp;
+sudo fuser -k 8080/tcp; sudo fuser -k 8081/tcp; sudo fuser -k 8080/tcp; sudo fuser -k 8081/tcp; python3 aerpawAPI.py
 cd home/xilinx/jupyter_notebooks/aerpaw/
-systemctl status bootAERPAW
-systemctl stop bootAERPAW
-python3 testLoad.py
-python3 testLoad.py
-sudo cp LMK04832_128_10292022.txt /usr/local/share/pynq-venv/lib/python3.8/site-packages/xrfclk/LMK04832_128.txt
-sudo cp LMX2594_3072_10292022.txt /usr/local/share/pynq-venv/lib/python3.8/site-packages/xrfclk/LMX2594_3072.txt
+
 sudo cp wifiStartup.service /lib/systemd/system/wifiStartup.service
 sudo cp wifiStartup.sh /usr/local/bin/wifiStartup.sh
 sudo systemctl disable wifiStartup.service
