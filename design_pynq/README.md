@@ -7,4 +7,4 @@ Steps:
 4) Run the following command in the terminal: sudo fuser -k 8080/tcp; sudo fuser -k 8081/tcp; sudo fuser -k 8080/tcp; sudo fuser -k 8081/tcp; python3 aerpawAPI.py
 
 
-To connect RFSoC2x2, you can use wifiStartup.py. After reboot, the USB port that Wi-Fi dongle is connected needs to be reset (I am not exactly sure why this is the case, however, it works). You don't need Wi-Fi to run the aerpawAPI.py.
+To connect RFSoC2x2 to a Wi-Fi network, you can use wifiStartup.py in this folder and create a service that runs on boot. After reboot, the USB port that Wi-Fi dongle is connected needs to be reset (I am not exactly sure why this is the case, however, it works). Note that you don't need Wi-Fi to run the aerpawAPI.py.
