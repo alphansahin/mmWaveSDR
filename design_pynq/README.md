@@ -1,4 +1,4 @@
-This folder consists of everthing that runs in PYNQ. The main file that needs to be running is aerpawAPI.py:
+This folder consists of everthing that runs in PYNQ (RFSoC2x2). The main file that needs to be running is aerpawAPI.py:
 
 Steps:
 1) Create a folder: home/xilinx/jupyter_notebooks/aerpaw/
