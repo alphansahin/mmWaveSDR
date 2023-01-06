@@ -1,0 +1,10 @@
+vlib work
+vcom  detector_pkg.vhd
+vcom  Accumulator.vhd
+vcom  adderEnergy.vhd
+vcom  adderI.vhd
+vcom  adderQ.vhd
+vcom  detector_block.vhd
+vcom  slicer.vhd
+vcom  xcorr.vhd
+vcom  detector.vhd

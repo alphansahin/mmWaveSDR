@@ -1,0 +1,9 @@
+ --> detector_pkg
+detector/detector/Accumulator --> Accumulator
+detector/detector/adderEnergy --> adderEnergy
+detector/detector/adderI --> adderI
+detector/detector/adderQ --> adderQ
+detector/detector/detector --> detector_block
+detector/detector/slicer --> slicer
+detector/detector/xcorr --> xcorr
+detector/detector --> detector
