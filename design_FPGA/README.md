@@ -1,7 +1,7 @@
-# Vivado Archieve:
-This is the archieve file generated from Vivado 2020.2. The archieve file consists of the implementation in addition to the IPs.
+# Vivado Archive:
+This folder includes the archive file generated from Vivado 2020.2. The file consists of the implementation in addition to the IPs.
 
-The naming implies the followings:
+The naming (mmWaveSDR_32_192_1536_d1_v47) implies the followings:
 Reference CLK: 32 MHz
 
 PL CLK: 192 MHz
