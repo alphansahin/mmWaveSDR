@@ -14,3 +14,5 @@ Decimation/Interpolation factor for ADC/DACs: 1
 Version: V47 (this is the version in my local system) - It can be ignored.
 
 Vivado version: 2020.2
+
+OS: Ubuntu 20.04
