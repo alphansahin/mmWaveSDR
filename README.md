@@ -6,5 +6,7 @@ AERPAW: https://aerpaw.org/
 
 We thank Xilinx University Program (XUP) for RFSoC2x2 boards and donating a Vivado ML Enterprise license to USC for this project: https://www.xilinx.com/support/university.html
 
+This project is supported in part by the NSF award CNS-1939334.
+
 ![mmWave SDR](https://github.com/alphansahin/mmWaveSDR/blob/main/sdr1.jpg?raw=true)
 ![Block diagram](https://github.com/alphansahin/mmWaveSDR/blob/main/blockDiagram.jpg?raw=true)
