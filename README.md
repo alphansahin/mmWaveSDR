@@ -1,6 +1,6 @@
 # Project: mmWaveSDR
 
-This repository includes the source codes for the mmWave SDR developed at the University of South Carolina (USC) for the Aerial Experimentation and Research Platform for Advanced Wireless (AERPAW) patform at North Carolina State University (NCSU) for experimentation in millimeter-wave bands, e.g., 28 GHz and 60 GHz.
+This repository includes the source codes for the mmWave SDR developed at the University of South Carolina (USC) for the Aerial Experimentation and Research Platform for Advanced Wireless (AERPAW) at North Carolina State University (NCSU) for experimentation in millimeter-wave bands, e.g., 28 GHz and 60 GHz.
 
 AERPAW: https://aerpaw.org/
 
