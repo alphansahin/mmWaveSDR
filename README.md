@@ -4,7 +4,7 @@ This repository includes the source codes for the mmWave SDR developed at the Un
 
 AERPAW: https://aerpaw.org/
 
-Xilinx University Program: https://www.xilinx.com/support/university.html (I would like to thank XUP for donating a Vivado ML Enterprise license to USC for this project)
+We thank Xilinx University Program (XUP) for donating a Vivado ML Enterprise license to USC for this project: https://www.xilinx.com/support/university.html
 
 ![mmWave SDR](https://github.com/alphansahin/mmWaveSDR/blob/main/sdr1.jpg?raw=true)
 ![Block diagram](https://github.com/alphansahin/mmWaveSDR/blob/main/blockDiagram.jpg?raw=true)
