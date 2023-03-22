@@ -1,0 +1,10 @@
+[Unit]
+Description=Executing wifiStartup.sh
+After=bootpy.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/wifiStartup.sh
+
+[Install]
+WantedBy=basic.target
