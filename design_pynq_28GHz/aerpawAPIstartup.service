@@ -1,0 +1,11 @@
+[Unit]
+Description=Executing bootAERPAW.sh
+Requires=pl_server.service jupyter.service bootpy.service
+After=pl_server.service jupyter.service bootpy.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/bootAERPAW.sh
+
+[Install]
+WantedBy=basic.target
