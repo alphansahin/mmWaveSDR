@@ -266,20 +266,26 @@ def _read_tics_output():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     all_txt = glob.glob(os.path.join(dir_path, '*.txt'))
     
-    print('Available LMK and LMX files in the directory:')
+    print('Available txt files in directory will be scanned (LMK04832_fsysref_fpl_vXX.txt and LMX_fpl_frfdc_vXX.txt files must be in the directory.):')
     for s in all_txt:
-        chip, freqIn, freqOut, tag = s.lower().split('/')[-1].strip('.txt').split('_')
-        
-        print([chip, freqIn, freqOut, tag])
-        
-        with open(s, 'r') as f:
-            lines = [l.rstrip("\n") for l in f]
-                
-            registers = []
-            for i in lines:
-                m = re.search('[\t]*(0x[0-9A-F]*)', i)
-                registers.append(int(m.group(1), 16),)
-                    
-        _Config[chip]['_'+str(freqIn)+'_'+str(freqOut)+'_'+tag] = registers
+        txtName = s.lower().split('/')[-1].strip('.txt')
+        if txtName[0:2] == 'lm' or txtName[0:2] == 'lk':
+            try:
+                chip, freqIn, freqOut, tag = s.lower().split('/')[-1].strip('.txt').split('_')
+                print([chip, freqIn, freqOut, tag])
+
+                with open(s, 'r') as f:
+                    lines = [l.rstrip("\n") for l in f]
+
+                    registers = []
+                    for i in lines:
+                        m = re.search('[\t]*(0x[0-9A-F]*)', i)
+                        registers.append(int(m.group(1), 16),)
+
+                _Config[chip]['_'+str(freqIn)+'_'+str(freqOut)+'_'+tag] = registers                
+            except:
+                print(txtName + ' is not a properly named LMX or LMK file.')
+
+
                 
 
