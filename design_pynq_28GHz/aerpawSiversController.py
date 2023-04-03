@@ -100,7 +100,7 @@ class siversController(siversDefaults):
         self.wr('rx_gain_ctrl_bfrf',0x77) # this is the gain before RF mixer, [0:3,RF gain]: 0-15 dB, 16 steps, [4:7, BF gain]: 0-15 dB, 16 steps
         self.wr('rx_gain_ctrl_reg_index',0x0)
 
-        self.wr('trx_tx_on',0x1FFFFF)
+        self.wr('trx_tx_on',0x1f0100)
         self.wr('tx_ctrl', 0x18)
         self.wr('tx_bb_i_dco',0x40) # Nominal: 0x40
         self.wr('tx_bb_q_dco',0x40) # Nominal: 0x40
@@ -110,8 +110,8 @@ class siversController(siversDefaults):
         self.wr('tx_bb_gain', 0x00) # tx_ctrl bit 3 (BB Ibias set) = 0: 0x00  = 0 dB, 0x01  = 6 dB, 0x02  = 6 dB, 0x03  = 9.5 dB
                                     # tx_ctrl bit 3 (BB Ibias set) = 1, 0x00  = 0 dB, 0x01  = 3.5 dB, 0x02  = 3.5 dB, 0x03  = 6 dB *
         self.wr('tx_bb_phase', 0x00)
-        self.wr('tx_bb_iq_gain', 0x44) # this is the gain in BB, [0:3,I gain]: 0-6 dB, 16 steps, [4:7, Q gain]: 0-6 dB, 16 steps
-        self.wr('tx_bfrf_gain', 0x33)  # this is the gain after RF mixer, [0:3,RF gain]: 0-15 dB, 16 steps, [4:7, BF gain]: 0-15 dB, 16 steps                
+        self.wr('tx_bb_iq_gain', 0xff) # this is the gain in BB, [0:3,I gain]: 0-6 dB, 16 steps, [4:7, Q gain]: 0-6 dB, 16 steps
+        self.wr('tx_bfrf_gain', 0x44)  # this is the gain after RF mixer, [0:3,RF gain]: 0-15 dB, 16 steps, [4:7, BF gain]: 0-15 dB, 16 steps                
             
 
 
