@@ -194,7 +194,6 @@ end
 %% Choose the TX/RX beam indices between [0:63]
 if 1 
     beamRXIndex = 32;
-    fc = 28e9;
     write(tcpPortCMD,['setBeamIndexRX ' num2str(beamRXIndex)],"uint8")
     getTheResponse(tcpPortCMD);    
 
@@ -203,7 +202,6 @@ if 1
     disp(['RX beam angle:' num2str(awvAngleRX28GHz(beamRXIndex+1))])    
     
     beamTXIndex = 31;
-    fc = 28e9;
     write(tcpPortCMD,['setBeamIndexTX ' num2str(beamTXIndex)],"uint8")
     getTheResponse(tcpPortCMD);
 
