@@ -100,7 +100,8 @@ class siversController(siversDefaults):
         self.wr('rx_gain_ctrl_bfrf',0x77) # this is the gain before RF mixer, [0:3,RF gain]: 0-15 dB, 16 steps, [4:7, BF gain]: 0-15 dB, 16 steps
         self.wr('rx_gain_ctrl_reg_index',0x0)
 
-        self.wr('trx_tx_on',0x1f0100)
+        #self.wr('trx_tx_on',0x1f0100)
+        self.wr('trx_tx_on',0x1FFFFF)
         self.wr('tx_ctrl', 0x18)
         self.wr('tx_bb_i_dco',0x40) # Nominal: 0x40
         self.wr('tx_bb_q_dco',0x40) # Nominal: 0x40
