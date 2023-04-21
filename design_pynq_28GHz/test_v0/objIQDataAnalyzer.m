@@ -17,6 +17,7 @@ classdef objIQDataAnalyzer < matlab.System
         showTimeDomainSignal3D = 1;
         hTimeDomainSignal3D
 
+        figureIndexStart = 1000;
         figurePositionsOption = 2; %0: auto figure position is off, 1: auto figure position is on, 3: internal settings in analyzeIQdata.m
         figureName = 'Waveform';
         figureLocationX = 625
@@ -78,7 +79,7 @@ classdef objIQDataAnalyzer < matlab.System
             end
     
             if (obj.showTimeDomainSignal)
-                h = figure(1000);
+                h = figure(obj.figureIndexStart+0);
                 if obj.figurePositionsOption>0
                     h.Position = positionRef + [xStep*0,yStep*0,0,0];
                 end
@@ -108,7 +109,7 @@ classdef objIQDataAnalyzer < matlab.System
                 ylim([-1 1])
             end
             if(obj.showPowerSpectralDensity)
-                h = figure(1001);
+                h = figure(obj.figureIndexStart+1);
                 [valLin,freqList]=pwelch(IQdata,[],[],[],obj.fsample, 'centered');
                 flist = (freqList+obj.fcarrier)/1e9;
                 obj.hPowerSpectralDensity{1}=plot(flist,10*log10(valLin), 'displayname', obj.figureName);
@@ -127,7 +128,7 @@ classdef objIQDataAnalyzer < matlab.System
                 ylim([min(10*log10(valLin))-10 max(10*log10(valLin))+10])
             end
             if(obj.showIQDiagram)
-                h = figure(1002);
+                h = figure(obj.figureIndexStart+2);
                 if norm(IQdata)>0
                     ave = sqrt(mean(maxk((abs(IQdata).^2),10)));
                     IQdataN = IQdata/ave;
@@ -155,7 +156,7 @@ classdef objIQDataAnalyzer < matlab.System
             end
     
             if(obj.showTimeDomainSignal3D)
-                h = figure(1003);
+                h = figure(obj.figureIndexStart+3);
                 t = [0:numel(IQdata)-1]*1/obj.fsample/1e-6;
                 obj.hTimeDomainSignal3D{1} = plot3(t, real(IQdata),imag(IQdata), 'displayname', obj.figureName);
                 grid on
@@ -193,9 +194,17 @@ classdef objIQDataAnalyzer < matlab.System
                 obj.hPowerSpectralDensity{1}.YData = 10*log10(valLin);
             end
 
+            if norm(IQdata)>0
+                ave = sqrt(mean(maxk((abs(IQdata).^2),10)));
+                IQdataN = IQdata/ave;
+            else
+                IQdataN = IQdata;
+                warning('IQdiagram: The power of the signal is 0. Signal is not normalized.')
+            end
+
             if(obj.showIQDiagram)
-                obj.hIQDiagram{1}.XData = real(IQdata);
-                obj.hIQDiagram{1}.YData = imag(IQdata);
+                obj.hIQDiagram{1}.XData = real(IQdataN);
+                obj.hIQDiagram{1}.YData = imag(IQdataN);
             end
     
 

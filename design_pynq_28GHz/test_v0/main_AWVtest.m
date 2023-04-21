@@ -30,9 +30,7 @@ if 1
     getTheResponse(tcpPortCMD);    
 end
 
-%% Set TX/RX AWVs
 if 1
-    %% Set RX AWVs
     awvAngleRX28GHz = [nan,-45.0,-40.5,-36.0,-31.5,-27.0,-22.5,-18.0,-13.5, -9.0, -4.5,  0.0,  4.5,  9.0, 13.5, 18.0, 22.5, 27.0, 31.5, 36.0, 40.5, 45.0];
     awvTableRX28GHz =[...
         0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x3F, 0x3F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
@@ -59,20 +57,6 @@ if 1
         0x00, 0x3F, 0x3F, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00
         ];
 
-    for beamRXIndex = 0:21
-        Ishifters = uint16(awvTableRX28GHz(beamRXIndex+1,1:2:end));
-        Qshifters = uint16(awvTableRX28GHz(beamRXIndex+1,2:2:end));
-        IQshifters = typecast(swapbytes(Ishifters*64+Qshifters),'uint8');        
-        write(tcpPortCMD,['setAWVRX ' num2str(beamRXIndex) ' ' num2str(IQshifters)],"uint8")
-        getTheResponse(tcpPortCMD);
-
-        if(0)
-            write(tcpPortCMD,['getAWVRX ' num2str(beamRXIndex)],"uint8")
-            getTheResponse(tcpPortCMD);
-        end
-    end
-
-    %% Set TX AWVs
     awvAngleTX28GHz = [nan,-45.0,-40.5,-36.0,-31.5,-27.0,-22.5,-18.0,-13.5, -9.0, -4.5,  0.0,  4.5,  9.0, 13.5, 18.0, 22.5, 27.0, 31.5, 36.0, 40.5, 45.0];
     awvTableTX28GHz =[...
         0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x3F, 0x3F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
@@ -97,120 +81,46 @@ if 1
         0x00, 0x00, 0x00, 0x3F, 0x3F, 0x3F, 0x3F, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00
         0x00, 0x00, 0x3F, 0x3F, 0x3F, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00
         0x00, 0x3F, 0x3F, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00
-        ];
+        ];    
+end
 
-    for beamTXIndex = 0:21
+%% RX AWV TEST
+if 0
+    for beamRXIndex = 0:1
+        Ishifters = uint16(awvTableRX28GHz(beamRXIndex+1,1:2:end));
+        Qshifters = uint16(awvTableRX28GHz(beamRXIndex+1,2:2:end));
+        IQshifters = typecast(swapbytes(Ishifters*64+Qshifters),'uint8');    
+        if(0)
+            write(tcpPortCMD,['setAWVRX ' num2str(beamRXIndex) ' ' num2str(IQshifters)],"uint8")
+            getTheResponse(tcpPortCMD);
+        end
+    
+        if(1)
+            write(tcpPortCMD,['getAWVRX ' num2str(beamRXIndex)],"uint8")
+            getTheResponse(tcpPortCMD);
+            disp(IQshifters)
+        end
+    end
+end
+
+%% TX AWV TEST
+if 1
+    for beamTXIndex = 0:10
         Ishifters = uint16(awvTableTX28GHz(beamTXIndex+1,1:2:end));
         Qshifters = uint16(awvTableTX28GHz(beamTXIndex+1,2:2:end));
-        IQshifters = typecast(swapbytes(Ishifters*64+Qshifters),'uint8'); 
-        write(tcpPortCMD,['setAWVTX ' num2str(beamTXIndex) ' ' num2str(IQshifters)],"uint8")
-        getTheResponse(tcpPortCMD);  
-        
+        IQshifters = typecast(swapbytes(Ishifters*64+Qshifters),'uint8');    
         if(0)
-            write(tcpPortCMD,['getAWVTX ' num2str(beamTXIndex)],"uint8")
-            getTheResponse(tcpPortCMD); 
+            write(tcpPortCMD,['setAWVTX ' num2str(beamTXIndex) ' ' num2str(IQshifters)],"uint8")
+            getTheResponse(tcpPortCMD);
         end
-    end
-end
-%% Choose the TX/RX beam indices between [0:21]
-if 1 
-    beamRXIndex = 11;
-    write(tcpPortCMD,['setBeamIndexRX ' num2str(beamRXIndex)],"uint8")
-    getTheResponse(tcpPortCMD);    
-
-    write(tcpPortCMD,['getBeamIndexRX'],"uint8")
-    getTheResponse(tcpPortCMD);    
-    disp(['RX beam angle:' num2str(awvAngleRX28GHz(beamRXIndex+1))])    
     
-    beamTXIndex = 11;
-    write(tcpPortCMD,['setBeamIndexTX ' num2str(beamTXIndex)],"uint8")
-    getTheResponse(tcpPortCMD);
-
-    write(tcpPortCMD,['getBeamIndexTX'],"uint8")
-    getTheResponse(tcpPortCMD);     
-
-    disp(['TX beam angle:' num2str(awvAngleRX28GHz(beamTXIndex+1))])    
-end
-
-%% Set TX/RX gains
-if 1
-    if(1)
-        rx_gain_ctrl_bb1 = 0x44;
-        rx_gain_ctrl_bb2 = 0x11;
-        rx_gain_ctrl_bb3 = 0x11;
-        rx_gain_ctrl_bfrf = 0x77;
-        write(tcpPortCMD,['setGainRX ' num2str(rx_gain_ctrl_bb1) ' ' num2str(rx_gain_ctrl_bb1) ' ' num2str(rx_gain_ctrl_bb1) ' ' num2str(rx_gain_ctrl_bfrf)],"uint8")
-        getTheResponse(tcpPortCMD);   
-    end
-    write(tcpPortCMD,['getGainRX'],"uint8")
-    getTheResponse(tcpPortCMD);       
-
-     
-    if(1)
-        tx_bb_gain = 0x00;
-        tx_bb_phase = 0x00;
-        tx_bb_iq_gain = 0x77;
-        tx_bfrf_gain = 0x77;
-        write(tcpPortCMD,['setGainTX ' num2str(tx_bb_gain) ' ' num2str(tx_bb_phase) ' ' num2str(tx_bb_iq_gain) ' ' num2str(tx_bfrf_gain)],"uint8")
-        getTheResponse(tcpPortCMD);       
-    end
-    write(tcpPortCMD,['getGainTX'],"uint8")
-    getTheResponse(tcpPortCMD);      
-end
-
-%% Reception
-if 1
-    % Set the behaviour
-    write(tcpPortCMD,'setModeSiver RXen1_TXen0',"uint8")
-    getTheResponse(tcpPortCMD);
-
-    modeRX = 1; % 0: STR, 1: WTR
-    numIQdataSamplesPerTransfer = 1000
-    write(tcpPortCMD,['setupReception' ' ' num2str(modeRX) ' ' num2str(numIQdataSamplesPerTransfer)],"uint8")
-    getTheResponse(tcpPortCMD);
-
-
-
-    % set the receiver enable flag
-    flag = 1; %0: disable RX, 1: enable RX
-    write(tcpPortCMD,['setTransferEnableRXFlag ' num2str(flag)],"uint8")
-    getTheResponse(tcpPortCMD);
-
-    % receive the IQ samples
-    while 1
-        % get # of available transfer to pull
-        write(tcpPortCMD,'getNumberOfAvailableTransfers',"uint8")
-        response = getTheResponse(tcpPortCMD);
-
-
-        beamRXIndex = mod(beamRXIndex+1,21);
-        write(tcpPortCMD,['setBeamIndexRX ' num2str(beamRXIndex)],"uint8")
-        getTheResponse(tcpPortCMD);    
-
-        responseSplit = strsplit((response));
-        numberOfAvailableTransfers = num2str(responseSplit{1});
-        if numberOfAvailableTransfers>0
-            numberOfTransfers = 1; % 1 transfer
-            timeOut = 5; % seconds
-            write(tcpPortCMD,['receiveIQSamples' ' ' num2str(numberOfTransfers) ' ' num2str(timeOut)],"uint8")
-            response= getTheResponse(tcpPortCMD);
-            if contains(response,'Success')
-                IQdata = readIQData(tcpPortDATA,numIQdataSamplesPerTransfer);
-                IQDataAnalyzer(IQdata)
-            end
-        else
-            disp('Not received...')
+        if(1)
+            write(tcpPortCMD,['getAWVTX ' num2str(beamTXIndex)],"uint8")
+            getTheResponse(tcpPortCMD);
+            disp(IQshifters)
         end
-        
     end
-
-    % Set the behaviour
-    write(tcpPortCMD,'setModeSiver RXen0_TXen0',"uint8")
-    getTheResponse(tcpPortCMD);    
 end
-
-
-
 
 
 
@@ -236,4 +146,3 @@ function response = getTheResponse(tcpPortCMD)
     response=char(typecast(read(tcpPortCMD),"uint8"));
     disp(response)
 end
-
