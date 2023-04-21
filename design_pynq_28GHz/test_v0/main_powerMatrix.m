@@ -27,7 +27,7 @@ IQDataAnalyzerRX = objIQDataAnalyzer('fsample', 1536e6, ...
                                  'figureIndexStart', 2000 ...
                                  );
 % Set frequency
-fc = 28e9;
+fc = 24e9;
 write(tcpPortCMDRX,['setCarrierFrequency ' num2str(fc)],"uint8")
 getTheResponse(tcpPortCMDRX);    
 
@@ -78,10 +78,10 @@ end
 %% Set TX/RX gains
 if 1 
     if(1)
-        rx_gain_ctrl_bb1 = 0x44;
-        rx_gain_ctrl_bb2 = 0x00;
-        rx_gain_ctrl_bb3 = 0x44;
-        rx_gain_ctrl_bfrf = 0xFF;
+        rx_gain_ctrl_bb1 = 0x00; % I[0:3]:[0,1,3,7,F]:-6:0 dB, 4 steps, Q[0:3]:[0,1,3,7,F]:-6:0 dB, 4 steps
+        rx_gain_ctrl_bb2 = 0x00; % I[0:3]:[0,1,3,7,F]:-6:0 dB, 4 steps, Q[0:3]:[0,1,3,7,F]:-6:0 dB, 4 steps
+        rx_gain_ctrl_bb3 = 0x11; % I[0:3]:[0-F]:0:6 dB, 16 steps, Q[0:3]:[0-F]:0:6 dB, 16 steps, 
+        rx_gain_ctrl_bfrf = 0xAA;% this is the gain before RF mixer, [0:3,RF gain]: 0-15 dB, 16 steps, [4:7, BF gain]: 0-15 dB, 16 steps
         write(tcpPortCMDRX,['setGainRX ' num2str(rx_gain_ctrl_bb1) ' ' num2str(rx_gain_ctrl_bb1) ' ' num2str(rx_gain_ctrl_bb1) ' ' num2str(rx_gain_ctrl_bfrf)],"uint8")
         getTheResponse(tcpPortCMDRX);   
     end
@@ -90,10 +90,11 @@ if 1
 
      
     if(1)
-        tx_bb_gain = 0x00;
+        tx_bb_gain = 0x00;% tx_ctrl bit 3 (BB Ibias set) = 0: 0x00  = 0 dB, 0x01  = 6 dB, 0x02  = 6 dB, 0x03  = 9.5 dB
+                          % tx_ctrl bit 3 (BB Ibias set) = 1, 0x00  = 0 dB, 0x01  = 3.5 dB, 0x02  = 3.5 dB, 0x03  = 6 dB *
         tx_bb_phase = 0x00;
-        tx_bb_iq_gain = 0x44;
-        tx_bfrf_gain = 0x44;
+        tx_bb_iq_gain = 0x00; % this is the gain in BB, [0:3,I gain]: 0-6 dB, 16 steps, [4:7, Q gain]: 0-6 dB, 16 steps
+        tx_bfrf_gain = 0x77; % this is the gain after RF mixer, [0:3,RF gain]: 0-15 dB, 16 steps, [4:7, BF gain]: 0-15 dB, 16
         write(tcpPortCMDTX,['setGainTX ' num2str(tx_bb_gain) ' ' num2str(tx_bb_phase) ' ' num2str(tx_bb_iq_gain) ' ' num2str(tx_bfrf_gain)],"uint8")
         getTheResponse(tcpPortCMDTX);       
     end
@@ -115,9 +116,9 @@ T = 1/f;
 t = linspace(0,T,100);
 payload1 = linspace(0,1,100).';
 
-rho = 0.3;
-Noversampling=4;
-Nsymbol = 150;
+rho = 0.15;
+Noversampling=2;
+Nsymbol = 300;
 randomSymbols = (2*randi([0,1],Nsymbol,1))-1+1i*((2*randi([0,1],Nsymbol,1))-1);
 payload2 = fcn_singleCarrier(rho, randomSymbols, Noversampling);
 IQdataTX = [syncWavefrom; zeros(1,100).' ; payload1; payload2];
@@ -163,6 +164,7 @@ if 1
         beamTXIndex = mod(beamTXIndex+1,NawvTX);
         write(tcpPortCMDTX,['setBeamIndexTX ' num2str(beamTXIndex)],"uint8")
         getTheResponse(tcpPortCMDTX);
+
 
         if beamTXIndex == 0
             beamRXIndex = mod(beamRXIndex+1,NawvRX);

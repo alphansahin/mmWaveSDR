@@ -125,7 +125,7 @@ classdef objIQDataAnalyzer < matlab.System
                 legend('show')
                 legend('Location','Best')
                 xlim([min(flist) max(flist)])
-                ylim([min(10*log10(valLin))-10 max(10*log10(valLin))+10])
+                ylim([min(10*log10(valLin))-10 max(10*log10(valLin))+30])
             end
             if(obj.showIQDiagram)
                 h = figure(obj.figureIndexStart+2);
