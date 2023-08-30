@@ -15,7 +15,7 @@ Version: V47 (this is the version in my local system) - It can be ignored.
 
 Dropbox link:
 [.xps project
-](https://www.dropbox.com/scl/fi/3yyymncf46k1fe2uh9jxx/baseNew_32_192_1536_d1_11212022.zip?rlkey=kaw0o9rs36l0z59ae8gz1b1xb&dl=0)https://www.dropbox.com/scl/fi/3yyymncf46k1fe2uh9jxx/baseNew_32_192_1536_d1_11212022.zip?rlkey=kaw0o9rs36l0z59ae8gz1b1xb&dl=0
+](https://www.dropbox.com/scl/fi/3yyymncf46k1fe2uh9jxx/baseNew_32_192_1536_d1_11212022.zip?rlkey=kaw0o9rs36l0z59ae8gz1b1xb&dl=0)
 
 Vivado version: 2020.2
 
