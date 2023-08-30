@@ -11,7 +11,7 @@ XRFDC CLK: 1.536 GHz
 
 Decimation/Interpolation factor for ADC/DACs: 1
 
-Version: V47 (this is the version in my local system) - It can be ignored.
+Version: V46 (this is the version in my local system) - It can be ignored.
 
 Dropbox link:
 [.xps project
