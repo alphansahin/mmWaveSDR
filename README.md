@@ -8,7 +8,7 @@ IEEE INFOCOM'23 CNERT paper: https://arxiv.org/pdf/2302.08444.pdf
 
 We thank Xilinx University Program (XUP) for RFSoC2x2 boards and for donating a Vivado ML Enterprise license to USC for this project: https://www.xilinx.com/support/university.html
 
-This project was supported in part by the NSF award CNS-1939334. If you are interested in funding or working toward this research, please feel free to reach me.
+This project was supported in part by the NSF award CNS-1939334. 
 
 ![mmWave SDR](https://github.com/alphansahin/mmWaveSDR/blob/main/sdr1.jpg?raw=true)
 ![Block diagram](https://github.com/alphansahin/mmWaveSDR/blob/main/blockDiagram.jpg?raw=true)
