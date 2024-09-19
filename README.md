@@ -6,7 +6,7 @@ AERPAW: https://aerpaw.org/
 
 IEEE INFOCOM'23 CNERT paper: https://arxiv.org/pdf/2302.08444.pdf
 
-IEEE MILCOM'24 paper: Will be available soon
+IEEE MILCOM'24 paper: https://arxiv.org/pdf/2409.11480
 
 We thank Xilinx University Program (XUP) for RFSoC2x2 boards and for donating a Vivado ML Enterprise license to USC for this project: https://www.xilinx.com/support/university.html
 
